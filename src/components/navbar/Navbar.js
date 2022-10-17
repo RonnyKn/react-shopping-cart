@@ -54,9 +54,9 @@ const Navbar = () => {
                   label="Cart"
                   onChange={() => {}}
                 >
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  <MenuItem>Ten</MenuItem>
+                  <MenuItem>Twenty</MenuItem>
+                  <MenuItem>Thirty</MenuItem>
                 </Select>
               </FormControl>
             </ThemeProvider>

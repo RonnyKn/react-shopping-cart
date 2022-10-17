@@ -1,7 +1,9 @@
 import React from "react"
+import { CartState } from "../context/Context"
 
 const HomePage = () => {
-  return <div style={{ color: "black" }}>HomePage</div>
+  const { state } = CartState()
+  console.log(state)
 }
 
 export default HomePage
