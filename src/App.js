@@ -1,3 +1,4 @@
+import { Container } from "@mui/material"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import "./App.css"
 import Cart from "./components/Cart"
@@ -9,8 +10,8 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" exact element={<HomePage />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/" element={<HomePage />} exact></Route>
+        <Route path="/cart" element={<Cart />}></Route>
       </Routes>
     </BrowserRouter>
   )

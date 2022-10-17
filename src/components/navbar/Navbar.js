@@ -26,7 +26,7 @@ const Navbar = () => {
 
   return (
     <>
-      <AppBar sx={{ padding: "5px" }}>
+      <AppBar sx={{ padding: "5px", position: "sticky" }}>
         <Container>
           <Toolbar>
             <ThemeProvider theme={myTheme}>
