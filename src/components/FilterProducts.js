@@ -30,13 +30,14 @@ const FilterProducts = () => {
           margin: "auto",
           // height: "20%",
           // width: "20%",
-          padding: "10px",
+          padding: "1rem",
           backgroundColor: "gray",
           color: "#fff",
+          boxSizing: "border-box",
         }}
       >
         <FormControl>
-          <FormLabel>Sort Products:</FormLabel>
+          <FormLabel sx={{ textAlign: "center" }}>Filter Products:</FormLabel>
           <RadioGroup defaultValue="ascending" name="radio-buttons-group">
             <FormControlLabel
               value="ascending"
@@ -60,9 +61,7 @@ const FilterProducts = () => {
               label="Fast Delivery Only"
               id={`inline-4`}
             />
-            <span style={{ paddingRight: 10 }}>
-              <FormLabel>Rating:</FormLabel>
-            </span>
+            <FormLabel sx={{ textAlign: "center" }}>Rating:</FormLabel>
             {/* <Rating/> */}
             <Button variant="outlined">Clear Filters</Button>
           </RadioGroup>
