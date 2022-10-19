@@ -2,6 +2,7 @@ import { Box } from "@mui/material"
 import React from "react"
 import { CartState } from "../context/Context"
 import SingleProduct from "./SingleProduct"
+import FilterProducts from "./FilterProducts"
 
 const HomePage = () => {
   const {
@@ -11,7 +12,7 @@ const HomePage = () => {
 
   return (
     <Box className="home" sx={{ display: "flex" }}>
-      {/* <Filter/> */}
+      <FilterProducts />
       <Box
         className="product-container"
         sx={{
