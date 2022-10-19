@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import "./App.css"
 import Cart from "./components/Cart"
 import HomePage from "./components/HomePage"
-import Navbar from "./components/navbar/Navbar"
+import Navbar from "./components/Navbar"
 
 function App() {
   return (
