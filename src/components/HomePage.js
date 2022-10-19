@@ -10,9 +10,18 @@ const HomePage = () => {
   console.log(products)
 
   return (
-    <Box className="home">
+    <Box className="home" sx={{ display: "flex" }}>
       {/* <Filter/> */}
-      <Box className="product-container">
+      <Box
+        className="product-container"
+        sx={{
+          display: "flex",
+          width: "78%",
+          padding: "20px",
+          flexWrap: "wrap",
+          justifyContent: "space-around",
+        }}
+      >
         {products.map((product) => {
           return <SingleProduct product={product} key={product.id} />
         })}
