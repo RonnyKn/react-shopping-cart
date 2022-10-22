@@ -6,6 +6,7 @@ import {
   CardContent,
   CardMedia,
   IconButton,
+  Rating,
   Typography,
 } from "@mui/material"
 import React from "react"
@@ -22,24 +23,29 @@ const SingleProduct = ({ product }) => {
           image={product.image}
           alt={product.image}
         />
-        <CardContent>
+        <CardContent sx={{ textAlign: "center" }}>
           <Typography
             variant="h6"
             sx={{
               textOverflow: "ellipsis",
               whiteSpace: "nowrap",
               overflow: "hidden",
-              textAlign: "center",
             }}
           >
             {product.name}
           </Typography>
+          <Typography>${product.price.split(".")[0]}</Typography>
+          {product.fastDelivery ? (
+            <Typography>Fast Delivery</Typography>
+          ) : (
+            <Typography>4 Days Delivery</Typography>
+          )}
+          <Rating name="read-only" value={product.ratings} readOnly />
         </CardContent>
         <CardActions
           sx={{
             display: "flex",
             justifyContent: "center",
-            // alignItems: "center",
           }}
         >
           <Box
