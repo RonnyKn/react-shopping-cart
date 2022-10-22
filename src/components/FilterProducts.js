@@ -11,8 +11,12 @@ import {
   ThemeProvider,
 } from "@mui/material"
 import React from "react"
+import { useState } from "react"
+import Rating from "./Rating"
 
 const FilterProducts = () => {
+  const [rate, setRate] = useState(3)
+
   const myTheme = createTheme({
     palette: {
       mode: "dark",
@@ -25,19 +29,22 @@ const FilterProducts = () => {
   return (
     <ThemeProvider theme={myTheme}>
       <Box
-        className="filter-products"
+        className="filter"
         sx={{
           margin: "auto",
-          // height: "20%",
-          // width: "20%",
-          padding: "1rem",
-          backgroundColor: "gray",
+          padding: "1.5rem",
+          backgroundColor: "#343a40",
           color: "#fff",
-          boxSizing: "border-box",
+          display: "flex",
+          flexDirection: "column",
+          width: "20%",
+          height: "86vh",
         }}
       >
         <FormControl>
-          <FormLabel sx={{ textAlign: "center" }}>Filter Products:</FormLabel>
+          <FormLabel sx={{ textAlign: "center", fontWeight: "bold" }}>
+            Filter Products:
+          </FormLabel>
           <RadioGroup defaultValue="ascending" name="radio-buttons-group">
             <FormControlLabel
               value="ascending"
@@ -61,8 +68,25 @@ const FilterProducts = () => {
               label="Fast Delivery Only"
               id={`inline-4`}
             />
-            <FormLabel sx={{ textAlign: "center" }}>Rating:</FormLabel>
-            {/* <Rating/> */}
+            <FormLabel
+              sx={{
+                textAlign: "center",
+                fontWeight: "bold",
+                marginBottom: "10px",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Rating :
+              <br />
+              <Rating
+                rating={rate}
+                onClick={(i) => setRate(i)}
+                style={{
+                  cursor: "pointer",
+                }}
+              />
+            </FormLabel>
             <Button variant="outlined">Clear Filters</Button>
           </RadioGroup>
         </FormControl>
