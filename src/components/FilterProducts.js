@@ -31,7 +31,6 @@ const FilterProducts = () => {
       <Box
         className="filter"
         sx={{
-          margin: "auto",
           padding: "1.5rem",
           backgroundColor: "#343a40",
           color: "#fff",
