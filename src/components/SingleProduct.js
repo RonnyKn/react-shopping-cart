@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Card,
   CardActions,
   CardContent,
@@ -12,8 +11,14 @@ import {
 import React from "react"
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart"
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart"
+import { CartState } from "../context/Context"
 
 const SingleProduct = ({ product }) => {
+  const {
+    state: { cart },
+    dispatch,
+  } = CartState()
+
   return (
     <Box className="single-product">
       <Card sx={{ margin: "15px", width: "300px" }}>
@@ -48,21 +53,24 @@ const SingleProduct = ({ product }) => {
             justifyContent: "center",
           }}
         >
-          <Box
-            sx={{
-              border: "2px solid green",
-              borderRadius: "20%",
-            }}
-          >
-            <IconButton size="small" disabled={!product.inStock}>
-              {!product.inStock ? "Out of Stock" : <AddShoppingCartIcon />}
-            </IconButton>
-          </Box>
-          <Box sx={{ border: "2px solid red", borderRadius: "20%" }}>
-            <IconButton size="small">
-              <RemoveShoppingCartIcon />
-            </IconButton>
-          </Box>
+          {cart.some((p) => p.id === product.id) ? (
+            <Box sx={{ border: "2px solid red", borderRadius: "20%" }}>
+              <IconButton size="small">
+                <RemoveShoppingCartIcon />
+              </IconButton>
+            </Box>
+          ) : (
+            <Box
+              sx={{
+                border: "2px solid green",
+                borderRadius: "20%",
+              }}
+            >
+              <IconButton size="small" disabled={!product.inStock}>
+                {!product.inStock ? "Out of Stock" : <AddShoppingCartIcon />}
+              </IconButton>
+            </Box>
+          )}
         </CardActions>
       </Card>
     </Box>
