@@ -19,7 +19,7 @@ const SingleProduct = ({ product }) => {
       <Card sx={{ margin: "15px", width: "300px" }}>
         <CardMedia
           component="img"
-          height="140"
+          height="220"
           image={product.image}
           alt={product.image}
         />
@@ -54,8 +54,8 @@ const SingleProduct = ({ product }) => {
               borderRadius: "20%",
             }}
           >
-            <IconButton size="small">
-              <AddShoppingCartIcon />
+            <IconButton size="small" disabled={!product.inStock}>
+              {!product.inStock ? "Out of Stock" : <AddShoppingCartIcon />}
             </IconButton>
           </Box>
           <Box sx={{ border: "2px solid red", borderRadius: "20%" }}>
