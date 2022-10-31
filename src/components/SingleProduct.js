@@ -19,6 +19,8 @@ const SingleProduct = ({ product }) => {
     dispatch,
   } = CartState()
 
+  console.log(cart)
+
   return (
     <Box className="single-product">
       <Card sx={{ margin: "15px", width: "300px" }}>
@@ -55,7 +57,15 @@ const SingleProduct = ({ product }) => {
         >
           {cart.some((p) => p.id === product.id) ? (
             <Box sx={{ border: "2px solid red", borderRadius: "20%" }}>
-              <IconButton size="small">
+              <IconButton
+                size="small"
+                onClick={() => {
+                  dispatch({
+                    type: "REMOVE_FROM_CART",
+                    payload: product,
+                  })
+                }}
+              >
                 <RemoveShoppingCartIcon />
               </IconButton>
             </Box>
@@ -66,7 +76,16 @@ const SingleProduct = ({ product }) => {
                 borderRadius: "20%",
               }}
             >
-              <IconButton size="small" disabled={!product.inStock}>
+              <IconButton
+                size="small"
+                disabled={!product.inStock}
+                onClick={() => {
+                  dispatch({
+                    type: "ADD_TO_CART",
+                    payload: product,
+                  })
+                }}
+              >
                 {!product.inStock ? "Out of Stock" : <AddShoppingCartIcon />}
               </IconButton>
             </Box>
