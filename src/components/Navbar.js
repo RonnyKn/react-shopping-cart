@@ -60,9 +60,31 @@ const Navbar = () => {
                   label="Cart"
                   onChange={() => {}}
                 >
-                  <MenuItem>Ten</MenuItem>
-                  <MenuItem>Twenty</MenuItem>
-                  <MenuItem>Thirty</MenuItem>
+                  {cart.length > 0 ? (
+                    <>
+                      {cart.map((product) => (
+                        <span
+                          style={{ display: "flex", flexDirection: "column" }}
+                          className="cart-item"
+                          key={product.id}
+                        >
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="cart-item-img"
+                            style={{ width: "200px" }}
+                          />
+                          <div className="cart-item-detail">
+                            <span>{product.name}</span>
+                            <span>{product.price.split(".")[0]}</span>
+                          </div>
+                        </span>
+                      ))}
+                    </>
+                  ) : (
+                    <MenuItem>cart is empty</MenuItem>
+                  )}
+                  {/* <MenuItem>Ten</MenuItem> */}
                 </Select>
               </FormControl>
             </ThemeProvider>
