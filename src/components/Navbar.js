@@ -2,6 +2,7 @@ import React from "react"
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart"
 import {
   AppBar,
+  Badge,
   Container,
   createTheme,
   FormControl,
@@ -14,6 +15,7 @@ import {
   Typography,
 } from "@mui/material"
 import { Link } from "react-router-dom"
+import { CartState } from "../context/Context"
 
 const Navbar = () => {
   const myTheme = createTheme({
@@ -22,6 +24,10 @@ const Navbar = () => {
       primary: { main: "#fff" },
     },
   })
+
+  const {
+    state: { cart },
+  } = CartState()
 
   return (
     <>
@@ -43,6 +49,7 @@ const Navbar = () => {
                 
               </Button> */}
               <FormControl sx={{ width: "10vw" }}>
+                <Badge badgeContent={cart.length} color="success"></Badge>
                 <InputLabel>
                   <AddShoppingCartIcon />
                 </InputLabel>
