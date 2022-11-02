@@ -3,6 +3,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart"
 import {
   AppBar,
   Badge,
+  Button,
   Container,
   createTheme,
   FormControl,
@@ -23,7 +24,7 @@ const Navbar = () => {
   const myTheme = createTheme({
     palette: {
       mode: "dark",
-      primary: { main: "#fff" },
+      secondary: { main: "#fff" },
     },
   })
 
@@ -43,7 +44,7 @@ const Navbar = () => {
               </Link>
               <TextField
                 variant="outlined"
-                color="primary"
+                color="secondary"
                 label="Search Product.."
                 onChange={() => {}}
                 sx={{ margin: "0 auto", width: "25vw" }}
@@ -64,7 +65,7 @@ const Navbar = () => {
                   onChange={() => {}}
                 >
                   {cart.length > 0 ? (
-                    <>
+                    <div style={{ textAlign: "center" }}>
                       {cart.map((product) => (
                         <span
                           style={{
@@ -105,7 +106,18 @@ const Navbar = () => {
                           </IconButton>
                         </span>
                       ))}
-                    </>
+                      <Link to="/cart" style={{ textDecoration: "none" }}>
+                        <Button
+                          variant="contained"
+                          color="info"
+                          style={{
+                            width: "95%",
+                          }}
+                        >
+                          Go To Cart
+                        </Button>
+                      </Link>
+                    </div>
                   ) : (
                     <MenuItem>cart is empty</MenuItem>
                   )}
