@@ -101,7 +101,14 @@ const Navbar = () => {
                             <span>{product.name}</span>
                             <span>${product.price.split(".")[0]}</span>
                           </div>
-                          <IconButton>
+                          <IconButton
+                            onClick={() =>
+                              dispatch({
+                                type: "REMOVE_FROM_CART",
+                                payload: product,
+                              })
+                            }
+                          >
                             <DeleteForeverIcon />
                           </IconButton>
                         </span>
@@ -109,7 +116,7 @@ const Navbar = () => {
                       <Link to="/cart" style={{ textDecoration: "none" }}>
                         <Button
                           variant="contained"
-                          color="info"
+                          color="primary"
                           style={{
                             width: "95%",
                           }}
