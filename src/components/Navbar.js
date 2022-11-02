@@ -6,6 +6,7 @@ import {
   Container,
   createTheme,
   FormControl,
+  IconButton,
   InputLabel,
   MenuItem,
   Select,
@@ -16,6 +17,7 @@ import {
 } from "@mui/material"
 import { Link } from "react-router-dom"
 import { CartState } from "../context/Context"
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever"
 
 const Navbar = () => {
   const myTheme = createTheme({
@@ -27,6 +29,7 @@ const Navbar = () => {
 
   const {
     state: { cart },
+    dispatch,
   } = CartState()
 
   return (
@@ -49,7 +52,7 @@ const Navbar = () => {
                 
               </Button> */}
               <FormControl sx={{ width: "10vw" }}>
-                <Badge badgeContent={cart.length} color="success"></Badge>
+                <Badge badgeContent={cart.length} color="error"></Badge>
                 <InputLabel>
                   <AddShoppingCartIcon />
                 </InputLabel>
@@ -64,7 +67,13 @@ const Navbar = () => {
                     <>
                       {cart.map((product) => (
                         <span
-                          style={{ display: "flex", flexDirection: "column" }}
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                            margin: "0 20px",
+                            marginBottom: "20px",
+                          }}
                           className="cart-item"
                           key={product.id}
                         >
@@ -72,12 +81,28 @@ const Navbar = () => {
                             src={product.image}
                             alt={product.name}
                             className="cart-item-img"
-                            style={{ width: "200px" }}
+                            style={{
+                              width: "50px",
+                              borderRadius: "50%",
+                              height: "50px",
+                              objectFit: "cover",
+                            }}
                           />
-                          <div className="cart-item-detail">
+                          <div
+                            className="cart-item-detail"
+                            style={{
+                              display: "flex",
+                              flex: "1",
+                              padding: "0 20px",
+                              flexDirection: "column",
+                            }}
+                          >
                             <span>{product.name}</span>
-                            <span>{product.price.split(".")[0]}</span>
+                            <span>${product.price.split(".")[0]}</span>
                           </div>
+                          <IconButton>
+                            <DeleteForeverIcon />
+                          </IconButton>
                         </span>
                       ))}
                     </>
