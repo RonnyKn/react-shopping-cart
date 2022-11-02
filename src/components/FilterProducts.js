@@ -37,7 +37,7 @@ const FilterProducts = () => {
           display: "flex",
           flexDirection: "column",
           width: "20%",
-          height: "86vh",
+          height: "480vh",
         }}
       >
         <FormControl>
